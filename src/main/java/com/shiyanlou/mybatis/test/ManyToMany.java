@@ -32,9 +32,9 @@ public class ManyToMany {
 		sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 
 		selectStudentCourse();
-		deleteStudentCourseById();
-		System.out.println("删除Rose选课 history");
-		selectStudentCourse();
+//		deleteStudentCourseById();
+//		System.out.println("删除Rose选课 history");
+//		selectStudentCourse();
 	}
 
 	private static void deleteStudentCourseById() {
