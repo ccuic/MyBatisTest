@@ -26,7 +26,7 @@ public class UserTest {
         sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         //insertUser();
          //updateUser();
-         deleteUser();
+         //deleteUser();
         // selectUserById();
          selectAllUser();
     }
