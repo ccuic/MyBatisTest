@@ -144,12 +144,15 @@ CREATE TABLE `user2` (
   `phone` varchar(20) DEFAULT NULL,
   `address` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 /*Data for the table `user2` */
 
 insert  into `user2`(`id`,`username`,`password`,`sex`,`age`,`phone`,`address`) values 
-(1,'Tom','123456','male',18,'18200123456','chengdu');
+(1,'Cui Ming','123456','male',NULL,NULL,'suzhou'),
+(3,'liu mei','999333','female',20,'13717777767','zhengzhou'),
+(4,'wang lu','999333','female',21,'13717888767','baoding'),
+(5,'wang kang','999333','male',22,'15217888767','baoding');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
