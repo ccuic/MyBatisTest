@@ -11,7 +11,12 @@
         <result property="age" column="age" javaType="int"></result>
         <result property="phone" column="phone" javaType="String"></result>
     </resultMap>
-
+    <select id="dyForeachTest" resultType="User2">
+        select * from user2 where id in
+        <foreach collection="list" item="it" index="in" open="(" separator="," close=")">
+            #{it}
+        </foreach>
+    </select>
     <!-- 定义 SQL 语句，其中 id 需要和接口中的方法名一致 -->
     <!-- useGeneratedKeys：实现自动生成主键 -->
     <!-- keyProperty： 唯一标记一个属性 -->
@@ -26,7 +31,18 @@
         address=#{address},username=#{username},sex=#{sex},age=#{age},phone=#{phone}  where
         id=#{id}
     </update>
-
+    <update id="dySetUser2"  parameterType="User2">
+        update user2
+        <set>
+            <if test="address != null">
+                address=#{address},
+            </if>
+            <if test="phone != null">
+                phone = #{phone}
+            </if>
+        </set>
+        where id=#{id}
+    </update>
     <delete id="deleteUser2" parameterType="int">
         delete from user2 where
         id=#{id}
@@ -57,5 +73,26 @@
     <select id="selectAllUser2" resultMap="user2Map">
         select * from user2
     </select>
-
+    <select id="dyTrimTest" resultType="User2">
+        select * from user2
+        <trim prefix="where" prefixOverrides="and |or ">
+            <if test="address != null">
+                address=#{address}
+            </if>
+            <if test="phone != null">
+                and phone like #{phone}
+            </if>
+        </trim>
+    </select>
+    <select id="dywhereTest" resultType="User2">
+        select * from user2
+        <where>
+            <if test="address != null">
+                address=#{address}
+            </if>
+            <if test="phone != null">
+                and phone like #{phone}
+            </if>
+        </where>
+    </select>
 </mapper>

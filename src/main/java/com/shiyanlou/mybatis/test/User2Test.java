@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -21,21 +22,77 @@ public class User2Test {
         InputStream inputStream=null;
         try {
             inputStream = Resources.getResourceAsStream(resource);
-
         } catch (IOException e) {
             e.printStackTrace();
         }
         sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         HashMap<String, Object> argMap = new HashMap<String,Object>();
-        argMap.put("phone", "15217888767");
-        dynamicIfTest(argMap);
-//        argMap.put("phone", null);
-//        dynamicIfTest(argMap);
-        //insertUser();
-         //updateUser();
-         //deleteUser();
-        //selectUserById();
-         //selectAllUser();
+        argMap.put("id",1);
+        argMap.put("address","puyang");
+        argMap.put("phone","13811656441");
+        dyForeachTest();
+    }
+    private static void dyForeachTest() {
+        SqlSession session = sqlSessionFactory.openSession();
+        User2Mapper mapper = session.getMapper(User2Mapper.class);
+        try {
+            ArrayList<Integer> ids=new ArrayList<Integer>();
+            ids.add(1); ids.add(3);
+            List<User2> user2List= mapper.dyForeachTest(ids);
+            session.commit();
+            for(User2 user:user2List) {
+                System.out.println(user.toString());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.rollback();
+        }
+        session.close();
+    }
+    private static void dySetUser2(HashMap<String, Object> address) {
+        SqlSession session = sqlSessionFactory.openSession();
+        User2Mapper mapper = session.getMapper(User2Mapper.class);
+        try {
+            int i= mapper.dySetUser2(address);
+            session.commit();
+            if (i == 1) {
+                System.out.println("success cui");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.rollback();
+        }
+        session.close();
+    }
+    private static void dywhereTest(HashMap<String, Object> address) {
+        SqlSession session = sqlSessionFactory.openSession();
+        User2Mapper mapper = session.getMapper(User2Mapper.class);
+        try {
+            List<User2> userList= mapper.dywhereTest(address);
+            session.commit();
+            for(User2 user:userList) {
+                System.out.println(user.toString());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.rollback();
+        }
+        session.close();
+    }
+    private static void dyTrimTest(HashMap<String, Object> address) {
+        SqlSession session = sqlSessionFactory.openSession();
+        User2Mapper mapper = session.getMapper(User2Mapper.class);
+        try {
+            List<User2> userList= mapper.dyTrimTest(address);
+            session.commit();
+            for(User2 user:userList) {
+                System.out.println(user.toString());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.rollback();
+        }
+        session.close();
     }
     private static void dynamicIfTest(HashMap<String, Object> address) {
         SqlSession session = sqlSessionFactory.openSession();

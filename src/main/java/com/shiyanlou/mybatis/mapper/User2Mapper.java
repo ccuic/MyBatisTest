@@ -12,5 +12,9 @@ public interface User2Mapper {
     public User2 selectUser2ById(Integer id) throws Exception;
     public List<User2> selectAllUser2() throws Exception;
     public List<User2> dynamicIfTest(HashMap<String, Object> address) throws Exception;
+    public List<User2> dyTrimTest(HashMap<String, Object> address) throws Exception;
+    public List<User2> dywhereTest(HashMap<String, Object> address) throws Exception;
+    public int dySetUser2(HashMap<String, Object> address) throws Exception;
+    public List<User2> dyForeachTest(List<Integer> ids) throws Exception;
 }
 
