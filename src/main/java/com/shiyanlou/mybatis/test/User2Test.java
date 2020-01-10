@@ -17,7 +17,7 @@ public class User2Test {
     private static SqlSessionFactory sqlSessionFactory;
 
     public static void main(String[] args) {
-        // mybatis 配置文件
+        // mybatis   配置文件
         String resource = "mybatis.cfg.xml";
         InputStream inputStream=null;
         try {
